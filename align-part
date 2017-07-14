@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#size1 = optimal_io_size
+#size2 = alignment_offset
+#size3 = physical_block_size
+
+size1=$(cat /sys/block/sda/queue/optimal_io_size)
+size2=$(cat /sys/block/sda/alignment_offset)
+size3=$(cat /sys/block/sda/queue/physical_block_size)
+
+echo 'optimal io size is' $size1
+echo 'alignment offset is' $size2
+echo 'physical block size is' $size3
+
+align_start=$(expr $size1 + $size2 \/ $size3)
+echo
+echo
+
+echo ’The first sector for the partiton should start at block’ $align_start
