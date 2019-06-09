@@ -1,0 +1,18 @@
+#!/bin/bash
+echo How many switch ports will be used
+read swcount
+echo How many servers will be installed in the rack
+read srvcount
+
+while [ $swcount -lt 49  ]
+do
+  echo "sw1p{$swcount}"
+   swcount=`expr $swcount + 1`
+
+while [ $srvcount -lt 45  ]
+do
+  echo  "srv{$srvcount}"
+  srvcount=`expr $srvcount + 1`
+done
+
+done
